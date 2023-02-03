@@ -27,6 +27,43 @@
 # - Insert the "Batman" sample data using ruby code. Do not use hard-coded ids.
 #   Delete any existing data beforehand so that each run of this script does not
 #   create duplicate data. (5 points)
+
+# Insert Movie Data 
+Movie.destroy_all
+Rails.logger.info "------------------------"
+Rails.logger.info "----- FRESH START! -----"
+Rails.logger.info "------------------------"
+
+new_movie = Movie.new
+new_movie["title"] = "Batman Begins"
+new_movie["year_released"] = "2005"
+new_movie["mpaa_rating"] = "PG-13"
+new_movie["studio_id"] = "1"
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight"
+new_movie["year_released"] = "2008"
+new_movie["mpaa_rating"] = "PG-13"
+new_movie["studio_id"] = "1"
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight Rises"
+new_movie["year_released"] = "2012"
+new_movie["mpaa_rating"] = "PG-13"
+new_movie["studio_id"] = "1"
+new_movie.save
+
+all_movies = Movie.all
+puts all_movies.inspect
+
+# Insert Studio Data
+new_studio = Studio.new
+new_studio["studio_name"] =
+
+
+
 # - Query the data and loop through the results to display output similar to the
 #   sample "report" below. (10 points)
 
