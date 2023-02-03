@@ -132,21 +132,128 @@ ledger = Actor.find_by({ "actor_name" => "Heath Ledger" })
 eckhart = Actor.find_by({ "actor_name" => "Aaron Eckhart" })
 gyllenhaal = Actor.find_by({ "actor_name" => "Maggie Gyllenhaal" })
 hardy = Actor.find_by({ "actor_name" => "Tom Hardy" })
-gordon = Actor.find_by({ "actor_name" => "Joseph Gordon_Levitt" })
+gordon = Actor.find_by({ "actor_name" => "Joseph Gordon Levitt" })
 hathaway = Actor.find_by({ "actor_name" => "Anne Hathaway" })
 
+new_role = Role.new
+new_role["character_name"] = "Bruce Wayne"
+new_role["movie_id"]=batty1["id"]
+new_role["actor_id"]=bale["id"]
+new_role.save
 
+new_role = Role.new
+new_role["character_name"] = "Alfred"
+new_role["movie_id"]=batty1["id"]
+new_role["actor_id"]=caine["id"]
+new_role.save
 
+new_role = Role.new
+new_role["character_name"] = "Ra's Al Ghul"
+new_role["movie_id"]=batty1["id"]
+new_role["actor_id"]=neeson["id"]
+new_role.save
 
-all_movies = Movie.all
-puts all_movies.inspect
+new_role = Role.new
+new_role["character_name"] = "Rachel Dawes"
+new_role["movie_id"]=batty1["id"]
+new_role["actor_id"]=holmes["id"]
+new_role.save
 
+new_role = Role.new
+new_role["character_name"] = "Commissioner Gordon"
+new_role["movie_id"]=batty1["id"]
+new_role["actor_id"]=oldman["id"]
+new_role.save
 
+new_role = Role.new
+new_role["character_name"] = "Bruce Wayne"
+new_role["movie_id"]=batty2["id"]
+new_role["actor_id"]=bale["id"]
+new_role.save
 
+new_role = Role.new
+new_role["character_name"] = "Joker"
+new_role["movie_id"]=batty2["id"]
+new_role["actor_id"]=ledger["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Harvey Dent"
+new_role["movie_id"]=batty2["id"]
+new_role["actor_id"]=eckhart["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Alfred"
+new_role["movie_id"]=batty2["id"]
+new_role["actor_id"]=caine["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Rachel Dawes"
+new_role["movie_id"]=batty2["id"]
+new_role["actor_id"]=gyllenhaal["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Bruce Wayne"
+new_role["movie_id"]=batty3["id"]
+new_role["actor_id"]=bale["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Commissioner Gordon"
+new_role["movie_id"]=batty3["id"]
+new_role["actor_id"]=oldman["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Bane"
+new_role["movie_id"]=batty3["id"]
+new_role["actor_id"]=hardy["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "John Blake"
+new_role["movie_id"]=batty3["id"]
+new_role["actor_id"]=gordon["id"]
+new_role.save
+
+new_role = Role.new
+new_role["character_name"] = "Selina Kyle"
+new_role["movie_id"]=batty3["id"]
+new_role["actor_id"]=hathaway["id"]
+new_role.save
 
 
 # - Query the data and loop through the results to display output similar to the
 #   sample "report" below. (10 points)
+puts "Movies"
+puts "======"
+puts ""
+
+movies_group = Movie.where({"studio_id" => warner["id"]})
+
+# loop through array of activity rows
+for movie in movies_group
+    # query to find the title for this movie
+    studio = Studio.find_by({"id" => movie["studio_id"]})
+  
+    # read the movie_title, movie_year, movie_rating and movie_studion columns from the movies_group row
+    movie_title = movie["title"]
+    movie_year = movie["year_released"]
+    movie_rating = movie["mpaa_rating"]
+    movie_studio = studio["studio_name"]
+  
+    # display a string with the contact's full name and note
+    puts "#{movie_title} #{movie_year} #{movie_raiting} #{movie_studio}"
+  end
+
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
+
 
 # Submission
 # 
@@ -197,18 +304,13 @@ puts all_movies.inspect
 # TODO!
 
 # Prints a header for the movies output
-puts "Movies"
-puts "======"
-puts ""
+
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
 # Prints a header for the cast output
-puts ""
-puts "Top Cast"
-puts "========"
-puts ""
+
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
