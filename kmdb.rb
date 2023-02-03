@@ -28,39 +28,120 @@
 #   Delete any existing data beforehand so that each run of this script does not
 #   create duplicate data. (5 points)
 
-# Insert Movie Data 
+# Destroy Data
 Movie.destroy_all
-Rails.logger.info "------------------------"
-Rails.logger.info "----- FRESH START! -----"
-Rails.logger.info "------------------------"
+Role.destroy_all
+Studio.destroy_all
+Actor.destroy_all
+
+# Insert Studio Data
+
+new_studio = Studio.new
+new_studio["studio_name"] = "Warner Bros."
+new_studio.save
+
+# Insert Movie Data 
+warner = Studio.find_by({ "studio_name" => "Warner Bros." })
 
 new_movie = Movie.new
 new_movie["title"] = "Batman Begins"
 new_movie["year_released"] = "2005"
 new_movie["mpaa_rating"] = "PG-13"
-new_movie["studio_id"] = "1"
+new_movie["studio_id"] = warner["id"]
 new_movie.save
 
 new_movie = Movie.new
 new_movie["title"] = "The Dark Knight"
 new_movie["year_released"] = "2008"
 new_movie["mpaa_rating"] = "PG-13"
-new_movie["studio_id"] = "1"
+new_movie["studio_id"] = warner["id"]
 new_movie.save
 
 new_movie = Movie.new
 new_movie["title"] = "The Dark Knight Rises"
 new_movie["year_released"] = "2012"
 new_movie["mpaa_rating"] = "PG-13"
-new_movie["studio_id"] = "1"
+new_movie["studio_id"] = warner["id"]
 new_movie.save
+
+# Insert Actors
+new_actor = Actor.new
+new_actor["actor_name"] = "Christian Bale"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Michael Caine"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Liam Neeson"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Katie Holmes"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Gary Oldman"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Heath Ledger"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Aaron Eckhart"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Maggie Gyllenhaal"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Tom Hardy"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Joseph Gordon-Levitt"
+new_actor.save
+
+
+new_actor = Actor.new
+new_actor["actor_name"] = "Anne Hathaway"
+new_actor.save
+
+# Insert Roles
+batty1 = Movie.find_by({ "title" => "Batman Begins" })
+batty2 = Movie.find_by({ "title" => "The Dark Knight" })
+batty3 = Movie.find_by({ "title" => "The Dark Knight Rises" })
+
+bale = Actor.find_by({ "actor_name" => "Christian Bale" })
+caine = Actor.find_by({ "actor_name" => "Michael Caine" })
+neeson = Actor.find_by({ "actor_name" => "Liam Neeson" })
+holmes = Actor.find_by({ "actor_name" => "Katie Holmes" })
+oldman = Actor.find_by({ "actor_name" => "Gary Oldman" })
+ledger = Actor.find_by({ "actor_name" => "Heath Ledger" })
+eckhart = Actor.find_by({ "actor_name" => "Aaron Eckhart" })
+gyllenhaal = Actor.find_by({ "actor_name" => "Maggie Gyllenhaal" })
+hardy = Actor.find_by({ "actor_name" => "Tom Hardy" })
+gordon = Actor.find_by({ "actor_name" => "Joseph Gordon_Levitt" })
+hathaway = Actor.find_by({ "actor_name" => "Anne Hathaway" })
+
+
+
 
 all_movies = Movie.all
 puts all_movies.inspect
 
-# Insert Studio Data
-new_studio = Studio.new
-new_studio["studio_name"] =
+
 
 
 
