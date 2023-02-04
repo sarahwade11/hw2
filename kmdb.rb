@@ -232,9 +232,7 @@ puts "Movies"
 puts "======"
 puts ""
 
-movies_group = Movie.all
-
-# loop through array of activity rows
+movies_group = Movie.all 
 for movie in movies_group
     studio = Studio.find_by({"id" => movie["studio_id"]})
     puts "#{movie["title"]}  #{movie["year_released"]}  #{movie["mpaa_rating"]}  #{studio["studio_name"]} "
