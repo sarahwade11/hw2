@@ -132,7 +132,7 @@ ledger = Actor.find_by({ "actor_name" => "Heath Ledger" })
 eckhart = Actor.find_by({ "actor_name" => "Aaron Eckhart" })
 gyllenhaal = Actor.find_by({ "actor_name" => "Maggie Gyllenhaal" })
 hardy = Actor.find_by({ "actor_name" => "Tom Hardy" })
-gordon = Actor.find_by({ "actor_name" => "Joseph Gordon Levitt" })
+gordon = Actor.find_by({ "actor_name" => "Joseph Gordon-Levitt" })
 hathaway = Actor.find_by({ "actor_name" => "Anne Hathaway" })
 
 new_role = Role.new
@@ -232,27 +232,26 @@ puts "Movies"
 puts "======"
 puts ""
 
-movies_group = Movie.where({"studio_id" => warner["id"]})
+movies_group = Movie.all
 
 # loop through array of activity rows
 for movie in movies_group
-    # query to find the title for this movie
     studio = Studio.find_by({"id" => movie["studio_id"]})
-  
-    # read the movie_title, movie_year, movie_rating and movie_studion columns from the movies_group row
-    movie_title = movie["title"]
-    movie_year = movie["year_released"]
-    movie_rating = movie["mpaa_rating"]
-    movie_studio = studio["studio_name"]
-  
-    # display a string with the contact's full name and note
-    puts "#{movie_title} #{movie_year} #{movie_raiting} #{movie_studio}"
+    puts "#{movie["title"]}  #{movie["year_released"]}  #{movie["mpaa_rating"]}  #{studio["studio_name"]} "
   end
 
+puts ""  
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
+
+roles = Role.all
+for role in roles
+  movie = Movie.find_by({"id" => role["movie_id"]})
+  actor = Actor.find_by({"id" => role["actor_id"]})
+  puts "#{movie["title"]}  #{actor["actor_name"]}  #{role["character_name"]}"
+end
 
 
 # Submission
